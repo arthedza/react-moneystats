@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand:300&display=swap');
+@import '../node_modules/antd/dist/antd.css';
+
+
+.App {
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+}
+
+.Sidebar {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  max-width: 25%;
+  min-width: 162px; /**************************************/
+  min-height: 72px;
+  width: 256px;
+  height: 100%;
+  background-color: #010c17;
+  color: #FFF;
+  box-shadow: 2px 0px 4px 0px rgba(35, 52, 71, 0.678);
+  /* border: 1px solid rgba(13, 36, 61, 0.3); */
+}
+
+.Logo {
+  background-color: #0756aa;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 2em;
+  font-weight: lighter;
+  /* border-right: 2px solid rgba(27, 66, 107, 0.6); */
+}
+
+.App-logo {
+  /* color: #FFF; */
+  padding: 20px;
+}
+
+.SideMenu {
+  position: relative;
+  top: 10%;
+  text-align: center;
+  background-color: #1C2541;
+}
+
+.Topbar {
+  min-width: 100%;
+  min-height: 72px;
+  height: 2em;
+  background-color: #0756aa;
+  color: #FFF;
+  font-size: 2em;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+}
+
+.AffixButton {
+  position: absolute;
+  top: 90%;
+  right: 5%;
+  text-align: center;
+}
+
+
+
+
+
+
+#copyright {
+  width: 100%;
+  padding: 20px;
+  position: absolute;
+  bottom: 0;
+  font-size: 0.8em;
+  color: rgba(240, 255, 255, 0.9)
+}
+
+#add {
+  font-size: 1.5em;
+}
