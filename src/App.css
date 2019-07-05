@@ -1,33 +1,47 @@
 @import url('https://fonts.googleapis.com/css?family=Quicksand:300&display=swap');
+@import '../node_modules/normalize.css/normalize.css';
 @import '../node_modules/antd/dist/antd.css';
 
-
-.App {
+body {
+  overflow: hidden;
+}
+/* .App {
+   position: relative; 
   text-align: center;
   display: flex;
   flex-direction: row;
-}
+  min-height: 100%;
+  align-items: flex-start;
+} */
 
-.Sidebar {
+ .Sidebar {
   position: absolute;
+   position: relative; 
+   bottom: 0; 
   display: flex;
   flex-direction: column;
-  max-width: 25%;
-  min-width: 162px; /**************************************/
-  min-height: 72px;
-  width: 256px;
-  height: 100%;
+  /* max-width: 25%; */
+  min-width: 162px; 
+  /* min-height: 72px; */
+  /* width: 256px; */
+  height: 100vh;
+  /* overflow: hidden; */
   background-color: #010c17;
   color: #FFF;
-  box-shadow: 2px 0px 4px 0px rgba(35, 52, 71, 0.678);
-  /* border: 1px solid rgba(13, 36, 61, 0.3); */
-}
+  box-shadow: 2px 0px 4px 0px rgba(35, 52, 71, 0.7);
+   
+} 
 
 .Logo {
+  display: flex;
+  /* justify-self: center; */
+  justify-content: center;
+  /* margin: auto; */
   background-color: #0756aa;
   font-family: 'Quicksand', sans-serif;
-  font-size: 2em;
+  font-size: 1.5em;
   font-weight: lighter;
+  box-shadow: 2px 0px 4px 0px rgba(35, 52, 71, 0.678);
   /* border-right: 2px solid rgba(27, 66, 107, 0.6); */
 }
 
@@ -38,12 +52,13 @@
 
 .SideMenu {
   position: relative;
-  top: 10%;
+  margin-top: 15vh;
+  /* top: 90%; */
   text-align: center;
   background-color: #1C2541;
 }
 
-.Topbar {
+/* .Topbar {
   min-width: 100%;
   min-height: 72px;
   height: 2em;
@@ -51,13 +66,39 @@
   color: #FFF;
   font-size: 2em;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-}
+} */
 
 .AffixButton {
   position: absolute;
   top: 90%;
   right: 5%;
   text-align: center;
+}
+
+/* .Wrapper {
+  /* display: flex;
+  flex-direction: column; 
+  position: relative;
+  /* left: 100px; 
+  /* right: 100%; 
+  margin: 0 auto;
+} */
+.Wrapper {
+  display: flex;
+  flex-direction: column;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+/* .Content{
+  background-color: red;
+} */
+
+.Title {
+  color: #FFF;
+  font-size: 2em;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+
 }
 
 
@@ -68,7 +109,11 @@
 #copyright {
   width: 100%;
   padding: 20px;
-  position: absolute;
+  /* position: relative; */
+  /* margin-top: 12vh; */
+  margin-top: auto;
+  /* top: 100%; */
+  /* position: absolute; */
   bottom: 0;
   font-size: 0.8em;
   color: rgba(240, 255, 255, 0.9)
@@ -77,3 +122,28 @@
 #add {
   font-size: 1.5em;
 }
+
+#transactions {
+  border: 1px solid grey;
+  border-radius: 10px;
+  max-width: 70%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+#total {
+  color: #f44336;
+  /* position: absolute; */
+  /* top: -50px; */
+  /* bottom: 10%; */
+  padding-left: 90%;
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+#date {
+  font-size: 1.2em;
+  margin-left: 15%;
+  padding: 10px;
+}
+
