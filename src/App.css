@@ -101,6 +101,27 @@ body {
 
 }
 
+.Accounts {
+  padding: 30px;
+}
+
+
+
+
+.ant-page-header {
+  background-color: #eff2f5 !important;
+  padding: 5px 24px !important;
+  max-width: 90% !important;
+  margin: 10px 0 10px !important;
+  border-radius: 2px !important; 
+}
+
+.ant-list {
+  margin: 0 auto !important;
+  left: -100px !important;
+  margin: 0 auto !important;
+}
+
 
 
 
@@ -146,4 +167,16 @@ body {
   margin-left: 15%;
   padding: 10px;
 }
+
+#spending-tab {
+  background-color: red;
+}
+#income-tab {
+  background-color: green;
+}
+#transfer-tab {
+  background-color: rgb(132, 187, 212);
+}
+
+
 
