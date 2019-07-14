@@ -5,10 +5,10 @@ import { Menu, Icon, Affix, Button, Layout, List, Popover, PageHeader, Tabs, Tab
 import {Router, Route, Redirect, Link, Switch} from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import {Provider, connect}   from 'react-redux';
-import {createStore, combineReducers} from 'redux';
+import {createStore, combineReducers, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
 import {changeRouteAction} from './actions/RouterActions';
-import {rootReducer} from './reducers/index';
+import rootReducer from './reducers/rootReducer';
 import Sidebar from './components/Sidebar';
 import Topbar from './components/Topbar'
 import SideMenuContainer from './containers/SideMenuContainer';
@@ -26,8 +26,28 @@ import Accounts from './components/Accounts';
 
 const {Header, Sider, Content} = Layout;
 
-export const store = createStore(rootReducer);
+export const store = createStore(rootReducer, applyMiddleware(thunk));
 store.subscribe(()=> console.log(store.getState()));
+
+
+//////////////////////////////////////////////////////////
+function promiseActionsMaker(name, promise){
+  const actionPending     = () => ({ type: 'PROMISE', name, status: 'PENDING', payload: null, error: null })
+  const actionResolved    = payload => ({ type: 'PROMISE', name, status: 'RESOLVED', payload, error: null })
+  const actionRejected    = error => ({ type: 'PROMISE', name, status: 'REJECTED', payload: null, error })
+
+  function actionPromiseThunk(){
+      return async dispatch => {
+          dispatch(actionPending())
+          let data = await promise.catch(e => dispatch(actionRejected(e)))
+          dispatch(actionResolved(data))
+      }
+  }
+
+  return actionPromiseThunk;
+}
+//////////////////////////////////////////////////////////
+
 
 
 function App() {
