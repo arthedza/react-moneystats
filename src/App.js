@@ -8,6 +8,7 @@ import {Provider, connect}   from 'react-redux';
 import {createStore, combineReducers, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
 import {changeRouteAction} from './actions/RouterActions';
+import {addDataAction, changeDataAction, fetchDataProcessing, fetchDataError, fetchDataSuccess} from './actions/DataActions';
 import rootReducer from './reducers/rootReducer';
 import Sidebar from './components/Sidebar';
 import Topbar from './components/Topbar'
@@ -18,6 +19,8 @@ import Spending from './components/Spending';
 import Income from './components/Income';
 import Journal from './components/Journal';
 import Accounts from './components/Accounts';
+import JournalContainer from './containers/JournalContainer';
+
 
 
 
@@ -47,7 +50,18 @@ function promiseActionsMaker(name, promise){
   return actionPromiseThunk;
 }
 //////////////////////////////////////////////////////////
-
+//****************************************************** */
+export function fetchDataThunk() { //TODO: EXPORT?????_____перенос??
+  return async dispatch => {
+    dispatch(fetchDataProcessing())
+    fetch('http://localhost:4000/Transactions')
+      .catch(error => dispatch(fetchDataError()))
+      .then(response => response.json())
+      .then(response => dispatch(fetchDataSuccess(response)));
+      
+  }
+}
+//****************************************************** */
 
 
 function App() {
@@ -70,7 +84,7 @@ function App() {
           
           <Content>
           <Redirect from="/" to="/journal" />
-            <Route path="/journal" component = {Journal} />
+            <Route path="/journal" component = {JournalContainer} />
             <Route path="/accounts" component = {Accounts} />
             <Route path="/spending" component = {Spending} />
             <Route path="/income" component = {Income} />

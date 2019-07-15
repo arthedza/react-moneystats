@@ -1,6 +1,9 @@
-export const SELECT_CATEGORY = 'SELECT_CATEGORY';
 export const ADD_RECORD = 'ADD_RECORD';
 export const DELETE_RECORD = 'DELETE_RECORD';
+export const DATA_LOADING = 'DATA_LOADING';
+export const DATA_ERROR = 'DATA_ERROR';
+export const DATA_SUCCESS = 'DATA_SUCCESS';
+
 
 
 
@@ -18,15 +21,26 @@ export const changeDataAction = id => (
     }
 )
 
-export const selectCategoryAction = category => (
+export const fetchDataProcessing = () => (
     {
-        type: SELECT_CATEGORY,
-        category
+        type: DATA_LOADING,
+        isLoading: true
     }
 )
-// export const changeRouteAction = route => (
-//     {
-//         type: CHANGE_ROUTE,
-//         route
-//     }
-// ) 
+
+export const fetchDataError = bool => (
+    {
+        type: DATA_ERROR,
+        hasError: bool,
+        isLoading: false
+    }
+)
+
+export const fetchDataSuccess = data => (
+    {
+        type: DATA_SUCCESS,
+        isLoading: false,
+        data
+    }
+)
+
