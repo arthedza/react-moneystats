@@ -3,7 +3,7 @@
 @import '../node_modules/antd/dist/antd.css';
 
 body {
-  overflow: hidden;
+  overflow-x: hidden;
 }
 /* .App {
    position: relative; 
@@ -15,7 +15,7 @@ body {
 } */
 
  .Sidebar {
-  position: absolute;
+  position: fixed;
    position: relative; 
    bottom: 0; 
   display: flex;
@@ -26,13 +26,15 @@ body {
   /* width: 256px; */
   height: 100vh;
   /* overflow: hidden; */
-  background-color: #010c17;
+  /* background-color: #010c17; */
   color: #FFF;
-  box-shadow: 2px 0px 4px 0px rgba(35, 52, 71, 0.7);
+  /* box-shadow: 2px 0px 4px 0px rgba(35, 52, 71, 0.7); */
    
 } 
 
 .Logo {
+  position: fixed;
+
   display: flex;
   /* justify-self: center; */
   justify-content: center;
@@ -51,12 +53,15 @@ body {
 }
 
 .SideMenu {
-  position: relative;
+  /* position: relative; */
+  position: fixed;
   margin-top: 15vh;
   /* top: 90%; */
   text-align: center;
   background-color: #1C2541;
 }
+
+
 
 /* .Topbar {
   min-width: 100%;
@@ -69,10 +74,11 @@ body {
 } */
 
 .AffixButton {
-  position: absolute;
+  position: fixed;
   top: 90%;
   right: 5%;
   text-align: center;
+  z-index: 2;
 }
 
 /* .Wrapper {
@@ -95,6 +101,8 @@ body {
 } */
 
 .Title {
+  display: block;
+  position: fixed;
   color: #FFF;
   font-size: 2em;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
@@ -109,6 +117,7 @@ body {
 
 
 .ant-page-header {
+  position: fixed !important;
   background-color: #eff2f5 !important;
   padding: 5px 24px !important;
   max-width: 90% !important;
@@ -130,7 +139,7 @@ body {
 #copyright {
   width: 100%;
   padding: 20px;
-  /* position: relative; */
+  position: fixed;
   /* margin-top: 12vh; */
   margin-top: auto;
   /* top: 100%; */

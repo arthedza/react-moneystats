@@ -28,10 +28,10 @@ export const fetchDataProcessing = () => (
     }
 )
 
-export const fetchDataError = bool => (
+export const fetchDataError = error => (
     {
         type: DATA_ERROR,
-        hasError: bool,
+        hasError: error,
         isLoading: false
     }
 )

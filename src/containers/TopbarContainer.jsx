@@ -1,6 +1,8 @@
-import {Provider, connect}   from 'react-redux';
+import { connect}   from 'react-redux';
 import Topbar from '../components/Topbar'
+import { history } from '../App';
 
 
-const TopbarContainer = connect(state => ({route: state.router.route}))(Topbar)
+//state.router.route
+const TopbarContainer = connect(state => ({route: history.location.pathname}))(Topbar)
 export default TopbarContainer;

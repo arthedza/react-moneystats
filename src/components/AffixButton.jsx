@@ -1,5 +1,5 @@
 import React from 'react';
-import { Menu, Icon, Affix, Button, Layout, List, Popover, PageHeader, Tabs, Table } from 'antd';
+import {  Icon, Affix, Button, Popover, Tabs } from 'antd';
 
 
 const { TabPane } = Tabs;

@@ -1,6 +1,9 @@
 import { ADD_RECORD, DELETE_RECORD, DATA_LOADING, DATA_ERROR, DATA_SUCCESS} from '../actions/DataActions.js';
 
-const dataReducer = (state = {}, {type, data, id, bool}) => {
+const initialState = {
+    data: []
+}
+const dataReducer = (state = initialState, {type, data, id, bool}) => {
     switch(type) {
         case ADD_RECORD:
             return {...state, data} 

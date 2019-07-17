@@ -1,6 +1,6 @@
 import React from 'react';
-import { Menu, Icon, Affix, Button, Layout, List, Popover, PageHeader, Tabs, Table } from 'antd';
-import {Router, Route, Redirect, Link, Switch} from 'react-router-dom';
+import { Menu, Icon} from 'antd';
+import { Link} from 'react-router-dom';
 
 
 
