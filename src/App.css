@@ -113,6 +113,14 @@ body {
   padding: 30px;
 }
 
+.TabInterface {
+  padding: 20px;
+}
+
+
+
+
+
 
 
 
@@ -186,6 +194,14 @@ body {
 #transfer-tab {
   background-color: rgb(132, 187, 212);
 }
+
+#amount, #category, #date, #notes {
+  width: 100%;
+  margin: 0;
+  /* display: block; */
+  /* padding: 20px; */
+}
+
 
 
 

@@ -1,5 +1,7 @@
 import React from 'react';
 import {  Icon, Affix, Button, Popover, Tabs } from 'antd';
+import {TabInterfaceContainer} from '../containers/TabInterfaceContainer';
+
 
 
 const { TabPane } = Tabs;
@@ -14,9 +16,11 @@ const PopoverContent = (
       <Tabs defaultActiveKey="1" onChange={callback}>
         <TabPane id="spending-tab" tab="Расход" key="1">
           Content of Tab Pane 1
+          <TabInterfaceContainer />
         </TabPane>
         <TabPane id="income-tab" tab="Доход" key="2">
           Content of Tab Pane 2
+          <TabInterfaceContainer />
         </TabPane>
         <TabPane id="transfer-tab" tab="Перевод" key="3">
           Content of Tab Pane 3

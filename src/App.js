@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 
-import { Layout} from 'antd';
+import { Layout, BackTop} from 'antd';
 import {Router, Route, Redirect} from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import {Provider}   from 'react-redux';
@@ -74,6 +74,7 @@ function App() {
           {/* <div className="App"> */}
           
             <AffixButton/>
+            
           
           <Sider>
           <Sidebar/>
