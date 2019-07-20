@@ -1,25 +1,25 @@
 {
-    "Transactions": [
-        {
-            "id": 1,
-            "date": "2019-05-31 20:20",
-            "amount": -58,
-            "category": "Перекусы",
-            "notes": "кофейня"
-        },
-        {
-            "id": 2,
-            "date": "2019-05-31 21:42",
-            "amount": -10,
-            "category": "Транспорт",
-            "notes": "маршрутка"
-        },
-        {
-            "id": 3,
-            "date": "2019-06-01 08:42",
-            "amount": -44,
-            "category": "Перекусы",
-            "notes": ""
-        }
-    ]
+  "Transactions": [
+    {
+      "date": "2019-07-20",
+      "amount": 120,
+      "category": "Продукты и бакалея",
+      "notes": "пивас",
+      "id": 1
+    },
+    {
+      "date": "2019-07-20",
+      "amount": 8,
+      "category": "Транспорт",
+      "notes": "metro",
+      "id": 2
+    },
+    {
+      "date": "2019-07-19",
+      "amount": 8,
+      "category": "Транспорт",
+      "notes": "metro",
+      "id": 3
+    }
+  ]
 }

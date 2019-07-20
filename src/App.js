@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 
-import { Layout, BackTop} from 'antd';
+import { Layout } from 'antd';
 import {Router, Route, Redirect} from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import {Provider}   from 'react-redux';
@@ -52,20 +52,48 @@ store.subscribe(()=> console.log(store.getState()));
 // }
 //////////////////////////////////////////////////////////
 //****************************************************** */
-export function fetchDataThunk() { 
+export function fetchDataThunk(init={}) { 
   //TODO: EXPORT?????_____перенос??
   return async dispatch => {
     dispatch(fetchDataProcessing())
-    fetch('http://localhost:4000/Transactions')
+    fetch('http://localhost:4000/Transactions', init)
       .catch(error => dispatch(fetchDataError(error)))
       .then(response => response.json())
       .then(response => dispatch(fetchDataSuccess(response)));
       
   }
 }
+
+export function postDataThunk(date, amount, category, notes) {
+  console.log('object post', date, amount, category, notes);
+  return async dispatch => {
+    let dateFormated = date.toISOString().slice(0,10);
+    dispatch(fetchDataProcessing())
+    fetch('http://localhost:4000/Transactions', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(
+          {
+              date: dateFormated,
+              amount,
+              category,
+              notes
+          }
+      )
+  })
+      .catch(error => dispatch(fetchDataError(error)))
+      .then(response => response.json())
+      .then(response => dispatch(fetchDataSuccess(response)))
+      .then(() => store.dispatch(fetchDataThunk()))
+}
+}
+
+//TODO: exclude from here
 //****************************************************** */
 
-
+//TODO: условный рендеринг
 function App() {
   return (
     <Provider store={store} >

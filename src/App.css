@@ -75,8 +75,9 @@ body {
 
 .AffixButton {
   position: fixed;
+  /* opacity: 30% !important; */
   top: 90%;
-  right: 5%;
+  right: 8%;
   text-align: center;
   z-index: 2;
 }
@@ -115,6 +116,11 @@ body {
 
 .TabInterface {
   padding: 20px;
+}
+
+.Journal {
+  display: flex;
+  flex-direction: column-reverse;
 }
 
 
@@ -165,15 +171,15 @@ body {
   border: 1px solid grey;
   border-radius: 10px;
   max-width: 70%;
-  margin: 0 auto;
-  padding: 20px;
+  /* margin: 10px auto 30px; */
+  padding: 25px;
 }
 
 #total {
   color: #f44336;
-  /* position: absolute; */
-  /* top: -50px; */
-  /* bottom: 10%; */
+  position: relative;
+  top: -50px;
+  /* bottom: 20%; */
   padding-left: 90%;
   font-weight: bold;
   font-size: 1.5em;
@@ -182,24 +188,36 @@ body {
 #date {
   font-size: 1.2em;
   margin-left: 15%;
-  padding: 10px;
+  padding: 20px 10px;
+  margin: 0 auto;
 }
 
 #spending-tab {
-  background-color: red;
+  /* background-color: rgba(255, 60, 0, 0.61); */
+  padding: 20px;
+  border: 2px solid #EF7A85;
+  border-radius: 5px;
 }
 #income-tab {
-  background-color: green;
+  padding: 20px;
+  border: 2px solid #7DDF64;
+  border-radius: 5px;
 }
 #transfer-tab {
-  background-color: rgb(132, 187, 212);
+  padding: 20px;
+  border: 2px solid rgba(0, 225, 255, 0.61);
+  border-radius: 5px;
 }
 
 #amount, #category, #date, #notes {
-  width: 100%;
-  margin: 0;
+  width: 90%;
+  /* margin: 5px; */
   /* display: block; */
   /* padding: 20px; */
+}
+
+#save {
+  margin: 20px;
 }
 
 

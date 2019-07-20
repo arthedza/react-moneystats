@@ -3,17 +3,29 @@ import { DatePicker, Select, InputNumber, Input, Button } from 'antd';
 import moment from 'moment';
 
 const { Option } = Select;
-const dateFormat = 'YYYY/MM/DD';
-const monthFormat = 'YYYY/MM';
-const { MonthPicker, RangePicker } = DatePicker;
+const dateFormat = 'DD/MM/YYYY';
 
-
+const categories = [
+  'Продукты и бакалея',
+  'Питание вне дома',
+  'Образование',
+  'Здоровье и гигиена',
+  'Домашние питомцы',
+  'Хобби',
+  'Транспорт',
+  'Коммунальные услуги',
+  'Отдых и развлечения',
+  'Банковские услуги',
+  'Расходы на работу',
+  'Подарки',
+  'Прочие расходы',
+]
 
 
 export class TabInterface extends React.Component {
 	constructor(props) {
     super(props);
-    this.state= null;
+    this.state = null;
     this.onCategoryChange = value => {
       console.log(`selected ${value}`);
       console.log(this.state);
@@ -56,6 +68,7 @@ export class TabInterface extends React.Component {
     //TODO: current date in datepicker
 		return (
 			<div className="TabInterface">
+        <label htmlFor="amount">Сумма:</label>
 				<InputNumber id="amount"
 					// defaultValue={1000}
           // placeholder="Сумма"
@@ -63,25 +76,25 @@ export class TabInterface extends React.Component {
 					parser={(value) => value.replace(/\₴\s?|(,*)/g, '')}
 					onChange={this.onAmountChange}
 				/>
-
-				<Select id="category" defaultValue="lucy" style={{ width: 150 }} onChange={this.onCategoryChange}>
-					<Option value="jack">Jack</Option>
-					<Option value="lucy">Lucy</Option>
-					<Option value="disabled" disabled>
-						Disabled
-					</Option>
-					<Option value="Yiminghe">yiminghe</Option>
+        <label htmlFor="category">Категория:</label>
+				<Select id="category"  style={{ width: 200 }} onChange={this.onCategoryChange}>
+          {categories.map( category => (
+            <Option key={category} value={category}>{category}</Option>
+          ))}
+					
 				</Select>
 				<br />
-				<DatePicker id="date" onChange={this.onDateChange} defaultValue={moment('2015/01/01', dateFormat)} format={dateFormat} />
+        <label htmlFor="date">Дата:</label>
+				<DatePicker id="date" onChange={this.onDateChange}  format={dateFormat} />
 				<br />
+        <label htmlFor="notes">Примечание:</label>
 				<Input id="notes" onChange={this.onCommentChange} placeholder="Basic usage" />
-				<Button type="primary" onClick={() => {
-          this.props.onSave()
+				<Button  type="primary" onClick={() => {
+          this.props.onSave(this.state)
           console.log('save: ',this.state);
 
         }}>
-					Primary
+					Добавить
 				</Button>
 			</div>
 		);

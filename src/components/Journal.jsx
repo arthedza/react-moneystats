@@ -1,30 +1,7 @@
 import React from 'react';
-import { List, BackTop } from 'antd';
+import { List } from 'antd';
 import { store } from '../App';
 import { fetchDataThunk } from '../App'; //TODO: !!!!!
-
-// const data = [
-//   {
-//     title: 'Продукты и бакалея',
-//     total: 237
-//   },
-//   {
-//     title: 'Обеды',
-//     total: 89
-//   },
-//   {
-//     title: 'Транспортные карты',
-//     total: 100
-//   },
-//   {
-//     title: 'Кофе',
-//     total: 22
-//   },
-//   {
-//     title: 'Премия',
-//     total: 2200
-//   },
-// ];
 
 class Journal extends React.Component {
 	constructor(props) {
@@ -38,58 +15,36 @@ class Journal extends React.Component {
 	}
 
 	render() {
+		console.log('this.props.data: ', this.props.data);
 		return (
-			<div>
-				{this.props.data.map((elem) => (
-					<div id="date">
-						{elem.date}
-						<List
+			<div className="Journal">
+				{this.props.data && this.props.data.length ? (
+					this.props.data.map((elem) => (
+						<div key={elem.id}>
+							<div id="date">{elem.date}</div>
+							<List
 							id="transactions"
 							itemLayout="horizontal"
 							dataSource={this.props.data}
-							renderItem={(elem) => (
+							renderItem={(item) => (
 								<div>
 									<List.Item>
 										<List.Item.Meta
 											// avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
-											title={<a href="https://ant.design">{elem.category}</a>}
+											title={<a href="https://ant.design">{item.category}</a>}
 											description={elem.notes}
 										/>
 									</List.Item>
-									<div id="total">{elem.amount}</div>
+									<div id="total">{item.amount} ₴</div>
 								</div>
 							)}
 						/>
-            
-					</div>
-				))}
+						</div>
+					))
+				) : null}
 			</div>
 		);
 	}
 }
-
-// const Journal = function(p) {
-
-//     return (
-//       <div >
-
-//         <div id="date">25 мая, суббота</div>
-//         <List id="transactions"
-//         itemLayout="horizontal"
-//         dataSource={data}
-//         renderItem={item => (
-//           <List.Item>
-//             <List.Item.Meta
-//               /*avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}*/
-//               title={<a href="https://ant.design">{item.title}</a>}
-//               description="Наличные"
-//             /> <div id="total">-45</div>
-//           </List.Item>
-//         )}>
-
-//         </List>
-//       </div>
-//     )
-//   }
 
 export default Journal;
