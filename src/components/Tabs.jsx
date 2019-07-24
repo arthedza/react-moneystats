@@ -1,6 +1,6 @@
 import React from 'react';
 import { DatePicker, Select, InputNumber, Input, Button } from 'antd';
-import moment from 'moment';
+// import moment from 'moment';
 
 const { Option } = Select;
 const dateFormat = 'DD/MM/YYYY';

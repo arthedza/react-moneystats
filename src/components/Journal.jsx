@@ -11,40 +11,77 @@ class Journal extends React.Component {
 
 	componentWillMount() {
 		store.dispatch(fetchDataThunk()); //TODO: !!!!!!
-		console.log(this.props); //TODO:
+		console.log(this.props);
 	}
 
+	//////////////////////////////////////////////////////////
+	getDays(data = []) {
+		if (data) {
+			let arr = [];
+			data.forEach((element) => arr.push(element.date));
+			return [ ...new Set(arr) ];
+		}
+	}
+
+	sortByDays(days, data = []) {
+		let result = [];
+		let sorted = [];
+		let filtered = [];
+		days.forEach((day) => {
+			sorted = data.map((element) => {
+				if (element.date === day) {
+					return {
+						amount: element.amount,
+						category: element.category,
+						notes: element.notes
+					};
+				}
+			});
+			filtered = sorted.filter((element) => {
+				return element !== undefined;
+			});
+			result.push({
+				day,
+				operations: filtered
+			});
+		});
+		return result;
+	}
+
+	//////////////////////////////////////////////////////////
+
 	render() {
-		console.log('this.props.data: ', this.props.data);
 		return (
 			<div className="Journal">
 				{this.props.data && this.props.data.length ? (
-					this.props.data.map((elem) => (
-						<div key={elem.id}>
-							<div id="date">{elem.date}</div>
+					this.sortByDays(this.getDays(this.props.data), this.props.data).map((elem, index) => (
+						<div key={index}>
+							{console.log('elem', elem)}
+							<div id="date">{elem.day}</div>
 							<List
-							id="transactions"
-							itemLayout="horizontal"
-							dataSource={this.props.data}
-							renderItem={(item) => (
-								<div>
-									<List.Item>
-										<List.Item.Meta
-											// avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
-											title={<a href="https://ant.design">{item.category}</a>}
-											description={elem.notes}
-										/>
-									</List.Item>
-									<div id="total">{item.amount} ₴</div>
-								</div>
-							)}
-						/>
+								id="transactions"
+								itemLayout="horizontal"
+								dataSource={elem.operations}
+								renderItem={(operation) => (
+									<div>
+										{console.log('OPS: ', operation)}
+										<List.Item>
+											<List.Item.Meta
+												title={<a href="https://ant.design">{operation.category}</a>}
+												description={operation.notes}
+											/>
+										</List.Item>
+										<div id="total">{operation.amount} ₴</div>
+									</div>
+								)}
+							/>
 						</div>
-					))
+					)) //___
 				) : null}
 			</div>
 		);
 	}
 }
+////
 
 export default Journal;

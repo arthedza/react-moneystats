@@ -1,6 +1,6 @@
 import {TabInterface} from '../components/Tabs';
 import {connect}   from 'react-redux';
-import {fetchDataThunk} from '../App';
+// import {fetchDataThunk} from '../App';
 import { store, postDataThunk } from '../App';
 // import {} from
 
