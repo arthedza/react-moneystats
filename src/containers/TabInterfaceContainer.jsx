@@ -16,6 +16,7 @@ const mapDispatchToProps = () => (
             // alert('hi')
             store.dispatch(postDataThunk(date, amount, category, notes));
              //TODO: !!!!!!
+            
 
             
         }

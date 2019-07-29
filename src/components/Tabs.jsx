@@ -33,8 +33,8 @@ export class TabInterface extends React.Component {
 				categoryValid: false,
 				amountValid: false,
 				notesValid: false,
-        dateValid: false,
-        formValid: false
+				dateValid: false,
+				formValid: false
 			}
 		};
 		this.validateForm = (formName, value) => {
@@ -78,8 +78,8 @@ export class TabInterface extends React.Component {
 					categoryValid: categoryValid,
 					amountValid: amountValid,
 					notesValid: commentValid,
-          dateValid: dateValid,
-          formValid: categoryValid && amountValid && dateValid
+					dateValid: dateValid,
+					formValid: categoryValid && amountValid && dateValid
 				}
 			});
 			console.log('__validation: ', this.state.validation);
@@ -114,14 +114,16 @@ export class TabInterface extends React.Component {
 			);
 		};
 		this.onDateChange = (value) => {
-			console.log('changed', value._d);
-			console.log(this.state);
-			this.setState(
-				{
-					date: value._d
-				},
-				this.validateForm('dateForm', value)
-			);
+			if (value) {
+				console.log('changed', value._d);
+				console.log(this.state);
+				this.setState(
+					{
+						date: value._d
+					},
+					this.validateForm('dateForm', value)
+				);
+			}
 		};
 	}
 
@@ -138,8 +140,14 @@ export class TabInterface extends React.Component {
 					parser={(value) => value.replace(/\₴\s?|(,*)/g, '')} //TODO: remove hryvnia's char
 					onChange={this.onAmountChange}
 				/>
+        <br/>
 				<label htmlFor="category">Категория:</label>
-				<Select id="category" style={{ width: 200 }} onChange={this.onCategoryChange}>
+				<Select
+					id="category"
+					style={{ width: 200 }}
+					onChange={this.onCategoryChange}
+					placeholder="Выберите категорию"
+				>
 					{categories.map((category) => (
 						<Option key={category} value={category}>
 							{category}
@@ -148,16 +156,17 @@ export class TabInterface extends React.Component {
 				</Select>
 				<br />
 				<label htmlFor="date">Дата:</label>
-				<DatePicker id="date" onChange={this.onDateChange} format={dateFormat} />
+				<DatePicker id="date" onChange={this.onDateChange} format={dateFormat} placeholder="Выберите дату" />
 				<br />
 				<label htmlFor="notes">Примечание:</label>
-				<Input id="notes" onChange={this.onCommentChange} placeholder="Basic usage" />
+				<Input id="notes" onChange={this.onCommentChange} placeholder="Комментарий" />
 				<Button
 					disabled={this.state.validation.formValid ? false : true}
 					type="primary"
 					onClick={() => {
 						this.props.onSave(this.state);
 						console.log('save: ', this.state);
+            
 					}}
 				>
 					Добавить

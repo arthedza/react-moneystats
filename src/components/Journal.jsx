@@ -68,7 +68,7 @@ class Journal extends React.Component {
 										<List.Item>
 											<List.Item.Meta
 												title={<a href="https://ant.design">{operation.category}</a>}
-												description={operation.notes}
+												description={operation.notes || "\u00A0"}
 											/>
 										</List.Item>
 										<div id="total">{operation.amount} ₴</div>

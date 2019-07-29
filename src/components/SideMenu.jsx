@@ -5,7 +5,7 @@ import { Link} from 'react-router-dom';
 
 
 const SideMenu = p => (
-    <div >
+    <div className="Menu-wrapper">
       
       <Menu 
         defaultSelectedKeys={['1']}
