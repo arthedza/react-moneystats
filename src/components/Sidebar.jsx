@@ -8,11 +8,9 @@ const Sidebar = (p) => (
 			<img src={wallet} className="App-logo" alt="logo" />
 			MoneyStats
 		</div>
-		{/* <div className="SideMenu-wrapper"> */}
-			<div className="SideMenu">
-				<SideMenuContainer />
-			</div>
-		{/* </div> */}
+		<div className="SideMenu">
+			<SideMenuContainer />
+		</div>
 
 		<span id="copyright">Copyright © 2019, Artedza</span>
 	</div>

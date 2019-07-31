@@ -1,20 +1,17 @@
 import React from 'react';
 import { List } from 'antd';
 import { store } from '../App';
-import { fetchDataThunk } from '../App'; //TODO: !!!!!
+import { fetchDataThunk } from '../App';
 
 class Journal extends React.Component {
 	constructor(props) {
 		super(props);
-		console.log(props);
 	}
 
 	componentWillMount() {
-		store.dispatch(fetchDataThunk()); //TODO: !!!!!!
-		console.log(this.props);
+		store.dispatch(fetchDataThunk());
 	}
 
-	//////////////////////////////////////////////////////////
 	getDays(data = []) {
 		if (data) {
 			let arr = [];
@@ -48,15 +45,12 @@ class Journal extends React.Component {
 		return result;
 	}
 
-	//////////////////////////////////////////////////////////
-
 	render() {
 		return (
 			<div className="Journal">
 				{this.props.data && this.props.data.length ? (
 					this.sortByDays(this.getDays(this.props.data), this.props.data).map((elem, index) => (
 						<div key={index}>
-							{console.log('elem', elem)}
 							<div id="date">{elem.day}</div>
 							<List
 								id="transactions"
@@ -64,11 +58,10 @@ class Journal extends React.Component {
 								dataSource={elem.operations}
 								renderItem={(operation) => (
 									<div>
-										{console.log('OPS: ', operation)}
 										<List.Item>
 											<List.Item.Meta
 												title={<a href="https://ant.design">{operation.category}</a>}
-												description={operation.notes || "\u00A0"}
+												description={operation.notes || '\u00A0'}
 											/>
 										</List.Item>
 										<div id="total">{operation.amount} ₴</div>
@@ -76,12 +69,11 @@ class Journal extends React.Component {
 								)}
 							/>
 						</div>
-					)) //___
+					))
 				) : null}
 			</div>
 		);
 	}
 }
-////
 
 export default Journal;
